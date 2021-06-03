@@ -28,6 +28,6 @@ pip3 install -r requirements.txt
 
 ```bash
 
-python3 runtest.py -i /path/origen/assignaments/ -o path/destino/resultados
+python3 runtest.py
 
 ```
