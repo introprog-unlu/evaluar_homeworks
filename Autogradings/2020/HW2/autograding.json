@@ -1,0 +1,94 @@
+{
+  "tests": [
+    {
+      "name": "testNumeroPositivo",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testNumeroPositivo",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 10
+    },
+    {
+      "name": "testQuienSos",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testQuienSos",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 10
+    },
+    {
+      "name": "testDameElMenorODecimeSiSonIguales",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testDameElMenorODecimeSiSonIguales",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 10
+    },
+    {
+      "name": "testDecimeElMes",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testDecimeElMes",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    },
+    {
+      "name": "testEstacion",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testEstacion",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    },
+    {
+      "name": "testMesPar",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testMesPar",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    },
+    {
+      "name": "testSituacionAlumno",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testSituacionAlumno",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    },
+    {
+      "name": "testEsTriangulo",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testEsTriangulo",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "testTipoTriangulo",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw2.py::testTipoTriangulo",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "testSumatoria",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw3.py::testSumatoria",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "testFactorial",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw3.py::testFactorial",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 25
+    },
+    {
+      "name": "testSumaParesOImpares",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw3.py::testSumaParesOImpares",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 25
+    },
+    {
+      "name": "testSumaEspaciadaDel1al100",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw3.py::testSumaEspaciadaDel1al100",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 20
+    },
+    {
+      "name": "testTeLoRepitoNVeces",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw3.py::testTeLoRepitoNVeces",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    }
+  ]
+}

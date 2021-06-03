@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "testValorAbsoluto",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testValorAbsoluto",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "testContarLetrasNombre",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testContarLetrasNombre",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 15
+    },
+    {
+      "name": "testPotenciacion",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testPotenciacion",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 10
+    },
+    {
+      "name": "testPerimetro",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testPerimetro",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "testPromedioNotas",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testPromedioNotas",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "testCambioDolar",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_hw1.py::testCambioDolar",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    }
+  ]
+}
