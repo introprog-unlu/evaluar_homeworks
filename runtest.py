@@ -7,27 +7,14 @@ import subprocess
 import json
 import csv
 import sys, getopt
-
+from dotenv import load_dotenv
 
 def main(argv):
-    inputdir = ''
-    outputdir = ''
-    autogradintFile = 'autogradingsValues.json'
-    roostercsvfile = 'classroom_roster_2021.csv'
-    try:
-        opts, args = getopt.getopt(argv,"hi:o:")
-    except getopt.GetoptError:
-        print ('runtest.py -i <inpudir> -o <outputdir>')
-        sys.exit(2)
-    
-    for opt, arg in opts:
-        if opt == '-h':
-            print ('runtest.py -i <inputdir> -o <outputdir>')
-            sys.exit()
-        elif opt in ("-i"):
-            inputdir = arg
-        elif opt in ("-o"):
-            outputdir = arg
+    load_dotenv()
+    autogradintFile = os.getenv('AUTOGRADING_TEST')
+    roostercsvfile = os.getenv('ROOSTER_FILE')
+    inputdir = os.getenv('HOMEWORKS_DIRECTORY')
+    outputdir = os.getenv('RESULT_AUTOGRADING')
 
     autogradingsJson = {}
 
@@ -75,17 +62,16 @@ def main(argv):
                                     succes += test_unit[1]
 
                                 else:
-                                    list_results_extended.append([hw_number,rooster[student],student,function_name,0,test_unit[1]])
-                                    print((hw_number,rooster[student],student,function_name,0,test_unit[1]))
+                                    list_results_extended.append([hw_number,rooster[student],student,function_name,-1,test_unit[1]])
                                     failed += test_unit[1]
                             #Se guardan los resultados (hw,estudiante,identificador_estudiante,exitosos,fallidos,total)
                             list_results.append([hw_number,rooster[student],student,succes,failed, succes+failed])
-        # guardo los datos de los test en un archivo
-            with open(outputdir+'/List_result_Hw'+hw+'_sutuden.csv','w',newline='') as out:
+            # guardo los datos de los test en un archivo
+            with open(outputdir+'/List_result_Hw'+hw_number+'/'+hw+'/'+'_sutuden.csv','w',newline='') as out:
                 csv_out=csv.writer(out)
                 csv_out.writerow(['hw','estudiante','identificador_estudiante','exitosos','fallidos','total'])
                 csv_out.writerows(list_results)
-            with open(outputdir+'/List_result_Hw'+hw+'_sutuden_extended.csv','w',newline='') as out:
+            with open(outputdir+'/List_result_Hw'+hw_number+'/'+hw+'/'+'_sutuden_extended.csv','w',newline='') as out:
                 csv_out=csv.writer(out)
                 csv_out.writerow(['hw','ejercicio','estudiante','identificador_estudiante','exitoso','fallidos'])
                 csv_out.writerows(list_results_extended)
