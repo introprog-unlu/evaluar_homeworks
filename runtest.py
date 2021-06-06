@@ -2,6 +2,7 @@
 
 from os import listdir
 from os.path import isdir
+from os.path import isfile
 import os
 import subprocess
 import json
@@ -33,10 +34,13 @@ def main(argv):
         for hw in listdir(inputdir):
             if isdir(inputdir+'/'+hw):
                 #Recorro los hw de los estudiantes en un HWX
-                #Cada hw indicidual corresponde con el alumno
+                #Cada hw indica cual corresponde con el alumno
                 for student in listdir(inputdir+'/'+hw):
                     path = inputdir+'/'+hw+'/'+student+'/'
+                    print(path,student.split('-')[-1])
+                    student = student.split('-')[-1]
                     if isdir(path):
+
                         if student != '.pytest_cache' and student in rooster:
                             #  autogradingsJson['HW'+parse_hw(hw)[0]]
                             # Recorro todos los test para este hw
@@ -47,7 +51,7 @@ def main(argv):
                                 #ejecuto los test, si pasan suman los puntos positivos
                                 #si no suman suman los puntos negativos
                                 #se calcula con esto los puntajes
-                                hw_number = hw.split()[1].split('-')[0]
+                                hw_number = hw.split('-')[1]
                                 function_name = getTestFromComand(test_unit[0].split()[1])
 
                                 if not subprocess.call(['python3',\
@@ -66,23 +70,30 @@ def main(argv):
                                     failed += test_unit[1]
                             #Se guardan los resultados (hw,estudiante,identificador_estudiante,exitosos,fallidos,total)
                             list_results.append([hw_number,rooster[student],student,succes,failed, succes+failed])
-            # guardo los datos de los test en un archivo
-            with open(outputdir+'/List_result_Hw'+hw_number+'/'+hw+'/'+'_sutuden.csv','w',newline='') as out:
-                csv_out=csv.writer(out)
-                csv_out.writerow(['hw','estudiante','identificador_estudiante','exitosos','fallidos','total'])
-                csv_out.writerows(list_results)
-            with open(outputdir+'/List_result_Hw'+hw_number+'/'+hw+'/'+'_sutuden_extended.csv','w',newline='') as out:
-                csv_out=csv.writer(out)
-                csv_out.writerow(['hw','ejercicio','estudiante','identificador_estudiante','exitoso','fallidos'])
-                csv_out.writerows(list_results_extended)
-            list_results_extended=[]
-            list_results= []
+                # guardo los datos de los test en un archivo
+                print(hw)
+                if not os.path.exists(outputdir+'/List_result_Hw'+hw):
+                    os.makedirs(outputdir+'/List_result_Hw'+hw)
+                with open(outputdir+'/List_result_Hw'+hw+'/'+hw+'_sutudents.csv','w',newline='') as out:
+                    csv_out=csv.writer(out)
+                    csv_out.writerow(['hw','estudiante','identificador_estudiante','exitosos','fallidos','total'])
+                    csv_out.writerows(list_results)
+                with open(outputdir+'/List_result_Hw'+hw+'/'+hw+'_sutudents_extended.csv','w',newline='') as out:
+                    csv_out=csv.writer(out)
+                    csv_out.writerow(['hw','ejercicio','estudiante','identificador_estudiante','exitoso','fallidos'])
+                    csv_out.writerows(list_results_extended)
+                list_results_extended=[]
+                list_results= []
     else:
         print(inputdir,outputdir,"Tienen que ser directorios validos")
 
+# def parse_hw(hw):
+    # hw_date = hw.split()[1].split('-')
+    # return  hw_date[0],'-'.join(hw_date[1:])
+
 def parse_hw(hw):
-    hw_date = hw.split()[1].split('-')
-    return  hw_date[0],'-'.join(hw_date[1:])
+    hw_number = hw.split('-')[1]
+    return  hw_number
 
 #separa el string me quedo con el nombre de la funcion y le saco la palabra test
 # para el primer homework tengo que escapar el _ 
